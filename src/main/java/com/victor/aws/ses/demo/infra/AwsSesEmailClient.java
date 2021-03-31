@@ -45,7 +45,7 @@ public class AwsSesEmailClient implements EmailClient {
             SendTemplatedEmailRequest request = new SendTemplatedEmailRequest()
                 .withDestination(new Destination().withToAddresses(destination))
                 .withSource(from)
-                .withTemplateData("{ \"templateDataVariable1\":\"variable\", \"templateDataVariable2\":\"variable\" }")
+                .withTemplateData("{ \"subject\":\"Hi Person\", \"userName\":\"Person\" }")
                 .withTemplate(template);
 
             ses.sendTemplatedEmail(request);

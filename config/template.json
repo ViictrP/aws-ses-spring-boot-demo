@@ -1,0 +1,8 @@
+{
+    "Template": {
+        "TemplateName": "template",
+        "SubjectPart": "{{subject}}",
+        "HtmlPart": "<h1>Hi, {{userName}}</h1>",
+        "TextPart": "Hi {{userName}}"
+    }
+}
