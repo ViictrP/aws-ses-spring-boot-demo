@@ -1,0 +1,7 @@
+aws:
+  credentials:
+    user_key: user_key
+    user_password_key: user_password_key
+  email:
+    from: teste@teste.com
+    template: template

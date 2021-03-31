@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "aws.email.from",
+      "type": "java.lang.String",
+      "description": "Description for aws.email.from."
+    },
+    {
+      "name": "aws.credentials.user_key",
+      "type": "java.lang.String",
+      "description": "Description for aws.credentials.user_key."
+    },
+    {
+      "name": "aws.credentials.user_password_key",
+      "type": "java.lang.String",
+      "description": "Description for aws.credentials.user_password_key."
+    },
+    {
+      "name": "aws.email.template",
+      "type": "java.lang.String",
+      "description": "Description for aws.email.template."
+    }
+  ] }
