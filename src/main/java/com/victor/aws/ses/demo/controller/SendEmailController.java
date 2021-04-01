@@ -26,11 +26,11 @@ public class SendEmailController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> sendEmail(@RequestBody SendEmailRequest request) {
         log.info("email request received {}", request);
-        if (request.getDestination() != null) {
+        if (request != null) {
             log.info("request destination email validated {}", request.getDestination());
-            return ResponseEntity.ok(service.sendEmail(request.getDestination()));
+            return ResponseEntity.ok(service.sendEmail(request));
         }
-        log.info("the destination email is invalid {}", request.getDestination());
+        log.info("the destination email is invalid");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body("The destination email is required");
     }

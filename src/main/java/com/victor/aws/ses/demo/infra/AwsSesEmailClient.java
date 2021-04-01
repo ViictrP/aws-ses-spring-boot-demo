@@ -9,6 +9,7 @@ import com.amazonaws.services.simpleemail.model.Destination;
 import com.amazonaws.services.simpleemail.model.SendTemplatedEmailRequest;
 import com.victor.aws.ses.demo.client.EmailClient;
 import com.victor.aws.ses.demo.client.exception.EmailException;
+import com.victor.aws.ses.demo.controller.request.SendEmailRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class AwsSesEmailClient implements EmailClient {
     private String userPasswordKey;
 
     @Override
-    public void send(String destination, String body) throws EmailException {
+    public void send(SendEmailRequest request) throws EmailException {
         try {
             log.info("creating the aws credentials object");
             BasicAWSCredentials awsCreds = new BasicAWSCredentials(userKey, userPasswordKey);
@@ -41,14 +42,14 @@ public class AwsSesEmailClient implements EmailClient {
                 .withRegion(Regions.US_EAST_1) // <- PUT YOUT REGION
                 .build();
 
-            log.info("creating the request with destination {}", destination);
-            SendTemplatedEmailRequest request = new SendTemplatedEmailRequest()
-                .withDestination(new Destination().withToAddresses(destination))
+            log.info("creating the request with destination {}", request.getDestination());
+            SendTemplatedEmailRequest sendEmailRequest = new SendTemplatedEmailRequest()
+                .withDestination(new Destination().withToAddresses(request.getDestination()))
                 .withSource(from)
-                .withTemplateData("{ \"subject\":\"Hi Person\", \"userName\":\"Person\" }")
+                .withTemplateData("{ \"subject\":\"" + request.getSubject() + "\", \"userName\":\""+ request.getMessage() +"\" }")
                 .withTemplate(template);
 
-            ses.sendTemplatedEmail(request);
+            ses.sendTemplatedEmail(sendEmailRequest);
             log.info("email sent");
         } catch (Exception ex) {
             log.info("{}", ex.getMessage());

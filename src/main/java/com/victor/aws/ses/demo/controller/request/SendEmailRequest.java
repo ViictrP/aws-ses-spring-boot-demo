@@ -10,4 +10,6 @@ import lombok.Setter;
 public class SendEmailRequest {
 
     private String destination;
+    private String subject;
+    private String message;
 }
