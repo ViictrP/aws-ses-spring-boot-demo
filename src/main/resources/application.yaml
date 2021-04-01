@@ -1,7 +1,7 @@
 aws:
   credentials:
-    user_key: AKIARWYWBDUFIKAK3T4R
-    user_password_key: G7RWw65c9ZuRhvkl0oQgh6uUkROj3WRuUdXdab3I
+    user_key: API_KEY
+    user_password_key: API_SECRET
   email:
     from: vtrsznaah@gmail.com
     template: template
